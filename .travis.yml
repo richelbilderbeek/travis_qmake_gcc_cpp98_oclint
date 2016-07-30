@@ -11,4 +11,4 @@ install:
 script: 
   - ./build.sh
   - ./do_oclint.sh
-  - ./travis_oclint
+  - ./travis_qmake_gcc_cpp98_oclint
