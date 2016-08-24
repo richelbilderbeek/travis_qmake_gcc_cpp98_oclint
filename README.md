@@ -2,8 +2,7 @@
 
 [![Travis CI logo](TravisCI.png)](https://travis-ci.org)
 
-[![Build Status](https://travis-ci.org/richelbilderbeek/travis_qmake_gcc_cpp98_oclint.svg?branch=master)](https://travis-ci.org/richelbilderbeek/travis_qmake_gcc_cpp98_oclint) (this build should fail)
-
+[![Build Status](https://travis-ci.org/richelbilderbeek/travis_qmake_gcc_cpp98_oclint.svg?branch=master)](https://travis-ci.org/richelbilderbeek/travis_qmake_gcc_cpp98_oclint)
 
 Minimal C++ project that is checked by OCLint and checked by Travis.
 
@@ -17,3 +16,9 @@ The goal of this project is to have a clean Travis CI build, with specs:
  * Code coverage: none
  * Source: one single file, `main.cpp`
  * Checked by OCLint
+
+Less builds:
+ * No OCLint: [travis_qmake_gcc_cpp98](https://www.github.com/richelbilderbeek/travis_qmake_gcc_cpp98)
+ 
+More complex builds:
+ * Use of C++11: [travis_qmake_gcc_cpp11_oclint](https://www.github.com/richelbilderbeek/travis_qmake_gcc_cpp11_oclint)
