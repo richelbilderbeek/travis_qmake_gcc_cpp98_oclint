@@ -12,3 +12,7 @@ script:
   - ./build.sh
   - ./do_oclint.sh
   - ./travis_qmake_gcc_cpp98_oclint
+
+after_success:
+  - cat log_correct.txt
+  - cat log_incorrect.txt
