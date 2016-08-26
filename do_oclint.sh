@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # Clean main should work
-./oclint-0.10.3/bin/oclint -o log_correct.txt -max-priority-1 0 -max-priority-2 0 -max-priority-3 0 main_correct.cpp -- -c > /dev/null
+./oclint-0.10.3/bin/oclint -o log_correct.txt main_correct.cpp -- -c
+
+cat log_correct.txt
 
 # Will be 1 if success
 # Will be 0 if fail
@@ -16,7 +18,9 @@ else
 fi
 
 # Dirty code should be detected
-./oclint-0.10.3/bin/oclint -o log_incorrect.txt -max-priority-1 0 -max-priority-2 0 -max-priority-3 0 main_incorrect.cpp -- -c > /dev/null
+./oclint-0.10.3/bin/oclint -o log_incorrect.txt main_incorrect.cpp -- -c
+
+cat log_incorrect.txt
 
 # Will be 1 if success
 # Will be 0 if fail
