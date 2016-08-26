@@ -1,35 +1,33 @@
 #!/bin/bash
 
+cpp_files=`ls *.cpp`
+
 # Clean main should work
-./oclint-0.10.3/bin/oclint -o log_correct.txt main_correct.cpp -- -c
+./oclint-0.10.3/bin/oclint -o oclint.log \
+  $cpp_files -- -c
 
-cat log_correct.txt
+cat oclint.log
 
-# Will be 1 if success
-# Will be 0 if fail
-success=`egrep "FilesWithViolations=0 P1=0 P2=0 P3=0" log_correct.txt | wc -l`
+# Will be 0 if success
+# Will be 1 if fail
+fail=`egrep "Compiler Errors" oclint.log | wc -l`
 
-if [ $success -eq 1 ]; 
+if [ $fail -eq 1 ]; 
 then
-  echo "Clean code indeed"
-else
-  echo "Incorrectly faulted clean code"
+  echo "OCLint: Compiler error"
   exit 1
+else
+  echo "OCLint: OK"
 fi
 
-# Dirty code should be detected
-./oclint-0.10.3/bin/oclint -o log_incorrect.txt main_incorrect.cpp -- -c
-
-cat log_incorrect.txt
-
 # Will be 1 if success
 # Will be 0 if fail
-success=`egrep "FilesWithViolations=0 P1=0 P2=0 P3=0" log_incorrect.txt | wc -l`
+success=`egrep "FilesWithViolations=0 P1=0 P2=0 P3=0" oclint.log | wc -l`
 
 if [ $success -eq 1 ]; 
 then
-  echo "Incorrectly labeled dirty code correct"
-  exit 1
+  echo "OCLint: OK"
 else
-  echo "Dirty code indeed"
+  echo "OCLint: Fail"
+  exit 1
 fi
